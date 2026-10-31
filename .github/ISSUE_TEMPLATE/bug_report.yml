@@ -1,0 +1,50 @@
+name: Bug report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! **Never paste your Groq API key, `cookies.txt`, or private transcripts here.**
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where did it go wrong?
+      options:
+        - Downloading the reel
+        - Transcription
+        - Gist card / summary
+        - Translation (non-English reel)
+        - Library or search
+        - Setup / start script
+        - Something else
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: Error message or log lines
+      description: Copy the message shown in the app and the matching lines from the backend terminal. Remove anything private first.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `git rev-parse --short HEAD`, or the release you downloaded

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#e1306c" />
+  <meta name="description" content="Transcribe & summarize Instagram Reels instantly" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <title>ReelGist</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ── Header ── -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">📖</span>
+        <span class="logo-text">ReelGist</span>
+      </div>
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="process">➕ New</button>
+        <button class="tab-btn" data-tab="library">📚 Library</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main>
+
+    <!-- ══ TAB: Process ══ -->
+    <section id="tab-process" class="tab-pane active">
+      <div class="card input-card">
+        <h2 class="card-title">🎬 Add a Reel</h2>
+        <p class="card-subtitle">Paste an Instagram Reel URL below.</p>
+
+        <div class="url-row">
+          <input
+            id="url-input"
+            type="url"
+            placeholder="https://www.instagram.com/reel/..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="process-btn" class="btn-primary">Analyse</button>
+        </div>
+        <p id="url-error" class="error-msg hidden"></p>
+      </div>
+
+      <!-- Processing status -->
+      <div id="status-card" class="card status-card hidden">
+        <p class="status-text">Processing… downloading, transcribing and summarizing (usually 10–30 seconds).</p>
+        <div class="steps">
+          <div class="step" id="step-download">
+            <span class="step-icon">⬇️</span>
+            <span class="step-label">Downloading reel…</span>
+            <span class="step-state"></span>
+          </div>
+          <div class="step" id="step-transcribe">
+            <span class="step-icon">🎙️</span>
+            <span class="step-label">Transcribing audio…</span>
+            <span class="step-state"></span>
+          </div>
+          <div class="step" id="step-summarize">
+            <span class="step-icon">🤖</span>
+            <span class="step-label">Summarizing with AI…</span>
+            <span class="step-state"></span>
+          </div>
+          <div class="step" id="step-done">
+            <span class="step-icon">✅</span>
+            <span class="step-label">Done!</span>
+            <span class="step-state"></span>
+          </div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Result card -->
+      <div id="result-card" class="card result-card hidden">
+        <!-- Reel meta -->
+        <div class="reel-meta">
+          <img id="reel-thumb" class="reel-thumb" src="" alt="thumbnail" loading="lazy" />
+          <div class="reel-info">
+            <div id="reel-title" class="reel-title"></div>
+            <div id="reel-uploader" class="reel-uploader"></div>
+            <div id="reel-duration" class="reel-duration"></div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section-head">
+          <span>🧠 Gist</span>
+          <button class="copy-btn" id="copy-summary-btn" title="Copy summary">📋 Copy</button>
+        </div>
+        <p id="truncated-note" class="error-msg hidden">⚠️ This transcript was very long, so only the first part was summarized.</p>
+        <div id="summary-content" class="summary-content"></div>
+
+        <!-- Transcript (collapsible) -->
+        <details class="transcript-details">
+          <summary class="transcript-toggle">🎙️ Full Transcript with Timestamps</summary>
+          <div id="transcript-content" class="transcript-content"></div>
+        </details>
+
+        <div class="result-actions">
+          <a id="open-reel-link" href="#" target="_blank" rel="noopener" class="btn-secondary">
+            Open on Instagram ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TAB: Library ══ -->
+    <section id="tab-library" class="tab-pane">
+      <div class="library-toolbar">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="🔍 Search title, uploader, or summary…"
+        />
+        <span id="reel-count" class="reel-count"></span>
+      </div>
+      <div id="library-grid" class="library-grid">
+        <p class="empty-state">No reels saved yet. Analyse a reel to get started!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Reel Detail Modal ── -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <div id="modal-meta" class="reel-meta"></div>
+      <div class="section-head">
+        <span>🧠 Gist</span>
+        <button class="copy-btn" id="modal-copy-btn">📋 Copy</button>
+      </div>
+      <div id="modal-summary" class="summary-content"></div>
+      <details class="transcript-details" open>
+        <summary class="transcript-toggle">🎙️ Full Transcript with Timestamps</summary>
+        <div id="modal-transcript" class="transcript-content"></div>
+      </details>
+      <div class="result-actions">
+        <a id="modal-open-link" href="#" target="_blank" rel="noopener" class="btn-secondary">
+          Open on Instagram ↗
+        </a>
+        <button id="modal-delete-btn" class="btn-danger">🗑️ Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

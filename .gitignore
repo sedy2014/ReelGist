@@ -1,0 +1,28 @@
+﻿# Secrets
+backend/.env
+backend/cookies.txt
+*.pem
+
+# Environment
+.venv/
+__pycache__/
+*.pyc
+
+# Runtime data
+downloads/
+insta_read.db
+*.db-journal
+
+# Local tooling (session logs, tool configs)
+.claude/
+.vincent/
+.pytest_cache/
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Private working notes (kept locally, not published)
+viability.md
+code_review.md

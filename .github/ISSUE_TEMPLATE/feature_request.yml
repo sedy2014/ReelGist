@@ -1,0 +1,41 @@
+name: Feature request
+description: Suggest an idea or tell us what you'd use ReelGist for
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening a new request, please check the Roadmap in the README and 👍 an existing issue if it covers your idea. Votes help us decide what to build next.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the problem or the moment you wished ReelGist did something differently.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+      description: Your idea for a feature or change.
+    validations:
+      required: true
+  - type: dropdown
+    id: usage
+    attributes:
+      label: How often do you save tech reels?
+      options:
+        - Daily
+        - A few times a week
+        - A few times a month
+        - Rarely
+  - type: dropdown
+    id: hosted
+    attributes:
+      label: Would you use an optional hosted version (no install, capture from your phone)?
+      description: The local edition stays free and open source either way. This just helps us gauge interest.
+      options:
+        - "Yes, and I'd pay a small amount for it"
+        - "Yes, but only if it's free"
+        - "Maybe"
+        - "No, the local edition is enough"

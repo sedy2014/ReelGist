@@ -4,6 +4,10 @@
 
 Paste an Instagram Reel link and ReelGist gives you a **gist card** you can trust, plus a timestamped transcript, saved to a personal library on your computer.
 
+![ReelGist demo: paste a reel link, scroll through the gist card, then open a saved reel from the Library](docs/images/ReelGist.gif)
+
+*Paste a reel link and scroll through the gist card, then open the Library, pick a saved reel and scroll through it.*
+
 ## What makes it different
 
 - **Every point cites its source.** Each step, tool and tip shows the exact words it came from and a timestamp. Click the timestamp to jump to that line in the transcript. Anything the AI did not take word for word from the reel is marked **unverified**.
